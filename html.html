@@ -1,0 +1,541 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Universidad Católica de Pereira - Landing</title>
+    <style>
+        :root {
+            --azul-ucp: #009BD8;
+            --amarillo-ucp: #DBA630;
+            --naranja-ucp: #F58634;
+            --verde-ucp: #7BAF4D;
+            --rojo-ucp: #D83135;
+            --oscuro: #1f2933;
+            --gris: #6b7280;
+            --gris-claro: #f4f7fb;
+            --blanco: #ffffff;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background: var(--gris-claro);
+            color: var(--oscuro);
+            line-height: 1.6;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .top-bar {
+            background: var(--azul-ucp);
+            color: var(--blanco);
+            padding: 8px 8%;
+            font-size: 14px;
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .navbar {
+            background: var(--blanco);
+            padding: 18px 8%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 4px 18px rgba(0, 0, 0, 0.08);
+            position: sticky;
+            top: 0;
+            z-index: 10;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-weight: bold;
+            color: var(--azul-ucp);
+        }
+
+        .logo-icon {
+            width: 46px;
+            height: 46px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--azul-ucp), var(--verde-ucp));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--blanco);
+            font-size: 22px;
+            font-weight: bold;
+        }
+
+        .menu {
+            display: flex;
+            gap: 26px;
+            list-style: none;
+            color: var(--oscuro);
+            font-weight: 600;
+        }
+
+        .menu a:hover {
+            color: var(--azul-ucp);
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 24px;
+            border-radius: 30px;
+            font-weight: bold;
+            transition: 0.3s ease;
+        }
+
+        .btn-primary {
+            background: var(--azul-ucp);
+            color: var(--blanco);
+        }
+
+        .btn-primary:hover {
+            background: #007db0;
+            transform: translateY(-2px);
+        }
+
+        .btn-outline {
+            border: 2px solid var(--blanco);
+            color: var(--blanco);
+        }
+
+        .btn-outline:hover {
+            background: var(--blanco);
+            color: var(--azul-ucp);
+        }
+
+        .hero {
+            min-height: 520px;
+            padding: 90px 8%;
+            display: grid;
+            grid-template-columns: 1.1fr 0.9fr;
+            align-items: center;
+            gap: 45px;
+            background:
+                linear-gradient(120deg, rgba(0, 155, 216, 0.95), rgba(31, 41, 51, 0.80)),
+                url('https://images.unsplash.com/photo-1523050854058-8df90110c9f1?auto=format&fit=crop&w=1400&q=80') center/cover;
+            color: var(--blanco);
+        }
+
+        .hero h1 {
+            font-size: clamp(38px, 5vw, 62px);
+            line-height: 1.1;
+            margin-bottom: 20px;
+        }
+
+        .hero p {
+            font-size: 19px;
+            max-width: 650px;
+            margin-bottom: 30px;
+        }
+
+        .hero-actions {
+            display: flex;
+            gap: 14px;
+            flex-wrap: wrap;
+        }
+
+        .hero-card {
+            background: rgba(255, 255, 255, 0.15);
+            border: 1px solid rgba(255, 255, 255, 0.25);
+            backdrop-filter: blur(10px);
+            border-radius: 24px;
+            padding: 30px;
+        }
+
+        .hero-card h3 {
+            margin-bottom: 16px;
+            font-size: 24px;
+        }
+
+        .hero-card ul {
+            list-style: none;
+        }
+
+        .hero-card li {
+            margin-bottom: 12px;
+            padding-left: 24px;
+            position: relative;
+        }
+
+        .hero-card li::before {
+            content: '●';
+            position: absolute;
+            left: 0;
+            color: var(--amarillo-ucp);
+        }
+
+        .section {
+            padding: 75px 8%;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 45px;
+        }
+
+        .section-title span {
+            color: var(--azul-ucp);
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-size: 14px;
+        }
+
+        .section-title h2 {
+            font-size: clamp(30px, 4vw, 42px);
+            margin-top: 8px;
+        }
+
+        .programas {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 22px;
+        }
+
+        .programa-card {
+            background: var(--blanco);
+            border-radius: 22px;
+            padding: 28px;
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08);
+            border-top: 6px solid var(--azul-ucp);
+            transition: 0.3s ease;
+        }
+
+        .programa-card:hover {
+            transform: translateY(-8px);
+        }
+
+        .programa-card:nth-child(2) {
+            border-top-color: var(--amarillo-ucp);
+        }
+
+        .programa-card:nth-child(3) {
+            border-top-color: var(--verde-ucp);
+        }
+
+        .programa-card:nth-child(4) {
+            border-top-color: var(--rojo-ucp);
+        }
+
+        .programa-card h3 {
+            margin-bottom: 12px;
+            font-size: 21px;
+        }
+
+        .programa-card p {
+            color: var(--gris);
+        }
+
+        .stats {
+            background: var(--oscuro);
+            color: var(--blanco);
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 25px;
+            text-align: center;
+        }
+
+        .stat h3 {
+            font-size: 42px;
+            color: var(--amarillo-ucp);
+        }
+
+        .vida-universitaria {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 45px;
+            align-items: center;
+        }
+
+        .image-box {
+            min-height: 390px;
+            border-radius: 28px;
+            background:
+                linear-gradient(rgba(0, 155, 216, 0.15), rgba(0, 155, 216, 0.15)),
+                url('https://images.unsplash.com/photo-1541339907198-e08756dedf3f?auto=format&fit=crop&w=1200&q=80') center/cover;
+            box-shadow: 0 18px 40px rgba(0, 0, 0, 0.15);
+        }
+
+        .content-box h2 {
+            font-size: 38px;
+            margin-bottom: 16px;
+        }
+
+        .content-box p {
+            color: var(--gris);
+            margin-bottom: 25px;
+        }
+
+        .features {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 16px;
+            margin-bottom: 28px;
+        }
+
+        .feature {
+            background: var(--blanco);
+            padding: 18px;
+            border-radius: 16px;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
+            font-weight: bold;
+        }
+
+        .feature:nth-child(1) { border-left: 5px solid var(--azul-ucp); }
+        .feature:nth-child(2) { border-left: 5px solid var(--verde-ucp); }
+        .feature:nth-child(3) { border-left: 5px solid var(--amarillo-ucp); }
+        .feature:nth-child(4) { border-left: 5px solid var(--naranja-ucp); }
+
+        .cta {
+            background: linear-gradient(135deg, var(--azul-ucp), var(--verde-ucp));
+            color: var(--blanco);
+            text-align: center;
+            border-radius: 30px;
+            margin: 0 8% 75px;
+            padding: 60px 30px;
+        }
+
+        .cta h2 {
+            font-size: 38px;
+            margin-bottom: 12px;
+        }
+
+        .cta p {
+            margin-bottom: 28px;
+            font-size: 18px;
+        }
+
+        .footer {
+            background: #111827;
+            color: var(--blanco);
+            padding: 45px 8%;
+            display: grid;
+            grid-template-columns: 1.3fr repeat(3, 1fr);
+            gap: 30px;
+        }
+
+        .footer h3,
+        .footer h4 {
+            margin-bottom: 14px;
+        }
+
+        .footer p,
+        .footer a {
+            color: #d1d5db;
+            font-size: 15px;
+            display: block;
+            margin-bottom: 8px;
+        }
+
+        @media (max-width: 980px) {
+            .hero,
+            .vida-universitaria {
+                grid-template-columns: 1fr;
+            }
+
+            .programas,
+            .stats,
+            .footer {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 680px) {
+            .menu {
+                display: none;
+            }
+
+            .top-bar {
+                justify-content: center;
+                text-align: center;
+            }
+
+            .programas,
+            .stats,
+            .features,
+            .footer {
+                grid-template-columns: 1fr;
+            }
+
+            .hero {
+                padding: 70px 6%;
+            }
+
+            .section {
+                padding: 55px 6%;
+            }
+
+            .cta {
+                margin: 0 6% 55px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="top-bar">
+        <span>📍 Pereira, Risaralda</span>
+        <span>📞 Línea de atención: (606) 312 4000 | ✉️ contacto@ucp.edu.co</span>
+    </div>
+
+    <nav class="navbar">
+        <a href="#" class="logo">
+            <span class="logo-icon">U</span>
+            <span>Universidad Católica<br>de Pereira</span>
+        </a>
+
+        <ul class="menu">
+            <li><a href="#programas">Programas</a></li>
+            <li><a href="#vida">Vida universitaria</a></li>
+            <li><a href="#investigacion">Investigación</a></li>
+            <li><a href="#contacto">Contacto</a></li>
+        </ul>
+
+        <a href="#" class="btn btn-primary">Inscríbete</a>
+    </nav>
+
+    <header class="hero">
+        <div>
+            <h1>Potenciamos tu calidad humana y profesional</h1>
+            <p>
+                Una comunidad universitaria inspirada en la formación integral, la innovación,
+                la investigación y el compromiso con la sociedad.
+            </p>
+            <div class="hero-actions">
+                <a href="#programas" class="btn btn-primary">Ver programas</a>
+                <a href="#contacto" class="btn btn-outline">Solicitar información</a>
+            </div>
+        </div>
+
+        <div class="hero-card">
+            <h3>¿Por qué estudiar aquí?</h3>
+            <ul>
+                <li>Formación con enfoque humano y profesional.</li>
+                <li>Programas académicos pertinentes para la región.</li>
+                <li>Campus universitario con espacios de aprendizaje.</li>
+                <li>Acompañamiento académico y bienestar universitario.</li>
+            </ul>
+        </div>
+    </header>
+
+    <section class="section" id="programas">
+        <div class="section-title">
+            <span>Oferta académica</span>
+            <h2>Programas para construir tu futuro</h2>
+        </div>
+
+        <div class="programas">
+            <article class="programa-card">
+                <h3>Pregrados</h3>
+                <p>Programas profesionales orientados a la formación integral y al desarrollo regional.</p>
+            </article>
+
+            <article class="programa-card">
+                <h3>Posgrados</h3>
+                <p>Especializaciones, maestrías y doctorados para fortalecer tu perfil profesional.</p>
+            </article>
+
+            <article class="programa-card">
+                <h3>Educación continua</h3>
+                <p>Cursos, diplomados y certificaciones para actualizar tus conocimientos.</p>
+            </article>
+
+            <article class="programa-card">
+                <h3>Investigación</h3>
+                <p>Grupos y proyectos que promueven la innovación y el impacto social.</p>
+            </article>
+        </div>
+    </section>
+
+    <section class="section stats">
+        <div class="stat">
+            <h3>50+</h3>
+            <p>Años de trayectoria</p>
+        </div>
+        <div class="stat">
+            <h3>30+</h3>
+            <p>Programas académicos</p>
+        </div>
+        <div class="stat">
+            <h3>4</h3>
+            <p>Facultades</p>
+        </div>
+        <div class="stat">
+            <h3>1</h3>
+            <p>Comunidad universitaria</p>
+        </div>
+    </section>
+
+    <section class="section vida-universitaria" id="vida">
+        <div class="image-box"></div>
+
+        <div class="content-box">
+            <h2>Vida universitaria con sentido humano</h2>
+            <p>
+                Esta maqueta está inspirada en una identidad institucional moderna, limpia y colorida,
+                con secciones que pueden adaptarse para facultades, programas, noticias o eventos.
+            </p>
+
+            <div class="features">
+                <div class="feature">Bienestar universitario</div>
+                <div class="feature">Campus activo</div>
+                <div class="feature">Internacionalización</div>
+                <div class="feature">Proyección social</div>
+            </div>
+
+            <a href="#" class="btn btn-primary">Conoce más</a>
+        </div>
+    </section>
+
+    <section class="cta" id="contacto">
+        <h2>Da el siguiente paso</h2>
+        <p>Conoce nuestra oferta académica y empieza tu proceso de inscripción.</p>
+        <a href="#" class="btn btn-outline">Solicitar asesoría</a>
+    </section>
+
+    <footer class="footer">
+        <div>
+            <h3>Universidad Católica de Pereira</h3>
+            <p>Diseño de ejemplo inspirado en la identidad visual institucional. No corresponde a una copia oficial del sitio.</p>
+        </div>
+
+        <div>
+            <h4>Universidad</h4>
+            <a href="#">Quiénes somos</a>
+            <a href="#">Misión y visión</a>
+            <a href="#">Campus</a>
+        </div>
+
+        <div>
+            <h4>Servicios</h4>
+            <a href="#">Admisiones</a>
+            <a href="#">Biblioteca</a>
+            <a href="#">Bienestar</a>
+        </div>
+
+        <div>
+            <h4>Contacto</h4>
+            <p>Pereira, Risaralda</p>
+            <p>contacto@ucp.edu.co</p>
+            <p>www.ucp.edu.co</p>
+        </div>
+    </footer>
+
+</body>
+</html>
